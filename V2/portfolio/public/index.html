@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Portfolio - Accueil</title>
+  <link rel="stylesheet" href="../src/css/main.css">
+  <link rel="stylesheet" href="../src/css/projects.css">
+</head>
+<body>
+  <!-- header via composant -->
+  <div data-include="../components/header.html"></div>
+
+  <main class="container" role="main">
+    <section id="intro" class="hero">
+      <div class="hero-inner">
+        <h2>Ferdinand — Ingénieur Électronique & Développeur C / C++</h2>
+        <p class="lead">Je conçois et documente des projets matériels et logiciels professionnels : montages, capteurs, firmwares embarqués et outils C++.</p>
+        <p><a class="btn" href="projects.html">Voir mes projets</a></p>
+      </div>
+    </section>
+
+    <section id="featured" class="section">
+      <h3>Projets mis en avant</h3>
+      <div id="featured-cards" class="grid"></div>
+    </section>
+  </main>
+
+  <div data-include="../components/footer.html"></div>
+
+  <script src="../src/js/main.js"></script>
+  <script src="../src/js/projects.js"></script>
+</body>
+</html>

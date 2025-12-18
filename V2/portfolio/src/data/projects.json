@@ -1,0 +1,16 @@
+{
+  "projects": [
+    {
+      "id": "p1",
+      "title": "Contrôleur Arduino pour robot",
+      "short": "Projet électronique utilisant Arduino et capteurs IR.",
+      "tags": ["électronique", "C++"]
+    },
+    {
+      "id": "p2",
+      "title": "Simulateur physique en C++",
+      "short": "Moteur de simulation pour systèmes dynamiques.",
+      "tags": ["C++", "simulation"]
+    }
+  ]
+}

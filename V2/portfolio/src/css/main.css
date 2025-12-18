@@ -1,0 +1,11 @@
+/* Styles globaux */
+:root{
+  --bg:#f8f8f8;
+  --text:#222;
+  --accent:#0077cc;
+}
+html,body{height:100%;margin:0;font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg)}
+.container{max-width:1100px;margin:0 auto;padding:1rem}
+header.site-header{background:var(--accent);color:#fff;padding:1rem 0}
+.site-nav ul{list-style:none;padding:0;display:flex;gap:1rem}
+a{color:var(--accent)}
