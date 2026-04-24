@@ -13,14 +13,58 @@
             });
         });
         
-        // Formulaire de contact
+        // Formulaire de contact avec envoi réel
         const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
+
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Ici, vous ajouteriez le code pour envoyer le formulaire
-            alert('Message envoyé! Merci pour votre intérêt.');
-            contactForm.reset();
+            const formData = new FormData(this);
+            const button = this.querySelector('button');
+            
+            // On désactive le bouton pour éviter les envois multiples
+            button.disabled = true;
+            button.innerText = "Envoi en cours...";
+
+            try {
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    // Popup de succès stylée
+                    Swal.fire({
+                        title: 'Message envoyé !',
+                        text: 'Merci Ferdinand, je vous répondrai dès que possible.',
+                        icon: 'success',
+                        confirmButtonColor: '#007bff', // Ton bleu primaire
+                        background: '#ffffff',
+                        timer: 3000
+                    });
+                    contactForm.reset();
+                } else {
+                    // Popup d'erreur serveur
+                    Swal.fire({
+                        title: 'Erreur',
+                        text: 'Une petite panne technique... Réessayez dans un instant.',
+                        icon: 'error',
+                        confirmButtonColor: '#dc3545'
+                    });
+                }
+            } catch (error) {
+                // Popup d'erreur réseau
+                Swal.fire({
+                    title: 'Connexion perdue',
+                    text: 'Vérifiez votre connexion internet avant de renvoyer.',
+                    icon: 'warning',
+                    confirmButtonColor: '#ffc107'
+                });
+            } finally {
+                button.disabled = false;
+                button.innerText = "Envoyer le message";
+            }
         });
         
         // Animation au défilement
