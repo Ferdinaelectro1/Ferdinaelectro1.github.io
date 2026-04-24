@@ -37,7 +37,7 @@
                     // Popup de succès stylée
                     Swal.fire({
                         title: 'Message envoyé !',
-                        text: 'Merci Ferdinand, je vous répondrai dès que possible.',
+                        text: 'Merci Mr/Mme, Ferdinand vous répondra dès que possible.',
                         icon: 'success',
                         confirmButtonColor: '#007bff', // Ton bleu primaire
                         background: '#ffffff',
