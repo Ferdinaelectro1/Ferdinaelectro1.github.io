@@ -1,96 +1,145 @@
 # 🚀 Comment ajouter un nouveau projet sur mon site
 
-Bonne nouvelle : tu n'as **qu'un seul fichier** à modifier et **un dossier** où déposer tes images.
-Pas besoin de toucher au reste du site, tout se met à jour tout seul. 🎉
+Chaque projet a maintenant **deux parties** :
+
+1. **L'aperçu** : la petite carte affichée sur la page d'accueil (section *Réalisations*).
+2. **La page complète** : un vrai article détaillé qui s'ouvre quand on clique sur la carte.
+
+Bonne nouvelle : tu n'as **pas besoin de coder**. Tu écris juste :
+- une petite **fiche** dans `projets/projets.js` (pour l'aperçu)
+- un **fichier texte** en Markdown dans `projets/contenu/` (pour l'article complet)
 
 ---
 
-## 📁 Où se trouvent les projets ?
-
-Tout est dans le dossier **`projets/`** :
+## 📁 Organisation des fichiers
 
 ```
 projets/
-├── projets.js                     ← LA LISTE de tes projets (à modifier)
-├── images/                        ← TES IMAGES de projets (à remplir)
-└── COMMENT-AJOUTER-UN-PROJET.md   ← ce guide
+├── projets.js                      ← la LISTE (aperçu) de tes projets
+├── contenu/                        ← un fichier .md par projet (l'article complet)
+│   ├── station-meteo.md
+│   └── robot-suiveur.md
+├── images/                         ← toutes tes images
+└── COMMENT-AJOUTER-UN-PROJET.md    ← ce guide
 ```
+
+> 🔑 **La règle importante** : l'`id` d'un projet dans `projets.js` doit être
+> **exactement** le même que le nom de son fichier dans `contenu/`.
+> Exemple : `id: "robot-suiveur"`  →  fichier `projets/contenu/robot-suiveur.md`
 
 ---
 
 ## ✅ Ajouter un projet en 3 étapes
 
-### Étape 1 — Dépose ton image
-Mets la photo de ton projet dans le dossier **`projets/images/`**.
-
-Exemple : `projets/images/station-meteo.jpg`
-
-> 💡 Conseils : utilise des images `.jpg`, `.png` ou `.webp`, de préférence en format
-> paysage (ex. 800×600). Évite les noms avec des espaces ou des accents
-> (écris `station-meteo.jpg` plutôt que `Station Météo.jpg`).
-
-### Étape 2 — Ajoute la fiche du projet
-Ouvre le fichier **`projets/projets.js`** et copie/colle ce modèle **à l'intérieur des crochets `[ ]`**,
-sans oublier la **virgule** entre chaque projet :
+### Étape 1 — Ajoute la fiche d'aperçu
+Ouvre **`projets/projets.js`** et colle ce modèle entre les crochets `[ ]`
+(n'oublie pas la **virgule** entre chaque projet) :
 
 ```js
 {
-  titre: "Nom de mon projet",
-  description: "Une ou deux phrases pour décrire ce que fait le projet.",
-  image: "station-meteo.jpg",
-  tags: ["ESP32", "Capteurs", "IoT"],
+  id: "robot-suiveur",
+  titre: "Robot suiveur de ligne",
+  description: "Petit robot autonome qui suit une ligne noire.",
+  image: "robot-suiveur.jpg",
+  tags: ["Arduino", "Robotique"],
+  date: "Mai 2025",
   lien: ""
 }
 ```
 
-### Étape 3 — Enregistre et ouvre `index.html`
-C'est tout ! Ton projet apparaît automatiquement dans la section **Réalisations**,
-et son ou ses tags s'ajoutent tout seuls dans les **boutons de filtre**. ✨
+### Étape 2 — Écris l'article complet
+Crée un nouveau fichier dans **`projets/contenu/`** portant le **même nom que l'`id`**,
+avec l'extension `.md`. Exemple : `projets/contenu/robot-suiveur.md`
+
+Écris dedans comme dans un document normal (voir le mémo Markdown plus bas).
+
+### Étape 3 — Dépose tes images
+Mets tes images dans **`projets/images/`**, puis utilise-les :
+- dans la fiche (`image: "robot-suiveur.jpg"`)
+- dans l'article : `![Mon robot](robot-suiveur.jpg)`
+
+C'est fini ! La carte apparaît sur l'accueil, et au clic on arrive sur ton article. 🎉
 
 ---
 
-## 🧩 Explication de chaque champ
+## ✍️ Mémo Markdown (le contenu de l'article)
 
-| Champ         | Obligatoire | À quoi ça sert |
-|---------------|:-----------:|----------------|
-| `titre`       | ✅ | Le nom affiché du projet |
-| `description` | ✅ | Le petit texte de présentation |
-| `image`       | ✅ | Le **nom du fichier** placé dans `projets/images/` (ex : `"robot.jpg"`). Tu peux aussi mettre un lien internet complet commençant par `http`. |
-| `tags`        | ✅ | Les mots-clés, entre crochets et séparés par des virgules. Ils servent aussi de filtres. |
-| `lien`        | ❌ | Un lien vers le projet (GitHub, vidéo YouTube, article...). Mets `""` si tu n'en as pas. |
+Le Markdown, c'est du texte normal avec quelques symboles pour la mise en forme :
 
----
+```markdown
+## Un grand titre
+### Un sous-titre
 
-## 🖼️ Exemple complet
+Un paragraphe normal. On peut mettre des mots en **gras** ou en *italique*.
 
-```js
-const PROJETS = [
-  {
-    titre: "Robot suiveur de ligne",
-    description: "Petit robot autonome qui suit une ligne noire grâce à des capteurs infrarouges.",
-    image: "robot-suiveur.jpg",
-    tags: ["Arduino", "Robotique", "Capteurs"],
-    lien: "https://github.com/Ferdinaelectro1/robot-suiveur"
-  },
-  {
-    titre: "Station météo intelligente",
-    description: "Mesure la température, l'humidité et la pression avec affichage OLED.",
-    image: "station-meteo.jpg",
-    tags: ["ESP32", "Capteurs"],
-    lien: ""
-  }
-];
+- Un élément de liste
+- Un autre élément
+
+1. Étape numérotée
+2. Deuxième étape
+
+![Texte décrivant l'image](mon-image.jpg)
+
+[Un lien vers un site](https://exemple.com)
+
+> Une citation ou une remarque mise en valeur.
 ```
+
+### 💻 Afficher du code (spécial toi 😉)
+
+Entoure ton code de trois accents graves ` ``` ` avec le langage :
+
+````markdown
+```cpp
+void setup() {
+    Serial.begin(115200);
+}
+```
+````
+
+Le code C++ sera affiché avec des couleurs, comme dans un éditeur.
+
+### 📊 Un tableau
+
+```markdown
+| Composant | Rôle              |
+|-----------|-------------------|
+| ESP32     | Microcontrôleur   |
+| DHT22     | Capteur           |
+```
+
+---
+
+## 👀 Comment voir mon site sur mon ordinateur
+
+Les pages complètes lisent des fichiers `.md`. Pour des raisons de sécurité, le navigateur
+**bloque cette lecture** quand on ouvre la page en double-cliquant dessus.
+Il faut donc lancer un petit **serveur local** (une seule fois, ça reste ouvert) :
+
+**Le plus simple :**
+1. Double-clique sur le fichier **`demarrer-le-site.sh`** (à la racine du site)
+   → il ouvre ton navigateur tout seul sur `http://localhost:8000`
+
+**Ou en ligne de commande**, dans le dossier du site :
+```bash
+python3 -m http.server 8000
+```
+puis ouvre `http://localhost:8000` dans ton navigateur.
+
+**Ou dans VS Code** : installe l'extension *Live Server*, puis clic droit sur
+`index.html` → *Open with Live Server*.
+
+> 🌍 Une fois ton site publié en ligne (GitHub Pages...), **tout fonctionne
+> automatiquement**, tu n'as plus besoin du serveur local.
 
 ---
 
 ## ⚠️ Erreurs fréquentes à éviter
 
-- ❌ **Oublier la virgule** entre deux projets → le site ne s'affiche plus.
-- ❌ **Oublier les guillemets** `"..."` autour du texte.
-- ❌ **Mauvais nom d'image** : le nom dans `projets.js` doit être **exactement** le même
-  que le fichier dans `projets/images/` (attention aux majuscules).
-- ✅ Si une image ne s'affiche pas, un logo par défaut apparaît à la place :
-  vérifie alors le nom du fichier.
+- ❌ **`id` différent du nom du fichier `.md`** → l'article ne se charge pas.
+- ❌ **Oublier la virgule** entre deux projets dans `projets.js` → le site s'affiche mal.
+- ❌ **Oublier les guillemets** `"..."` autour du texte dans `projets.js`.
+- ❌ **Mauvais nom d'image** (attention aux majuscules et aux accents).
+- ✅ Utilise des noms de fichiers simples : `robot-suiveur.jpg` plutôt que `Robot Suiveur.jpg`.
 
 Bon courage, et amuse-toi bien à remplir ton portfolio ! 💪
