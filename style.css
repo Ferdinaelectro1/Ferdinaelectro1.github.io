@@ -315,11 +315,14 @@ section {
 }
 
 .project-card {
+    display: block;
     background-color: white;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    color: inherit;
 }
 
 .project-card:hover {
@@ -644,5 +647,248 @@ footer {
     .back-to-top {
         bottom: 20px;
         right: 20px;
+    }
+}
+/* =====================================================================
+   PAGE ARTICLE D'UN PROJET (projet.html)
+   ===================================================================== */
+
+/* En-tête du projet */
+.project-hero {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 140px 0 60px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 25px;
+    transition: color 0.3s, gap 0.3s;
+}
+
+.back-link:hover {
+    color: white;
+    gap: 12px;
+}
+
+.project-hero-meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    margin-bottom: 12px;
+}
+
+.project-hero-meta i {
+    margin-right: 6px;
+}
+
+.project-hero h1 {
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    max-width: 900px;
+}
+
+.project-hero .project-tags .project-tag {
+    background-color: rgba(255,255,255,0.18);
+    color: white;
+}
+
+/* Corps de l'article */
+.project-article {
+    padding: 60px 15px 80px;
+}
+
+.project-cover {
+    margin-bottom: 45px;
+}
+
+.project-cover img {
+    width: 100%;
+    max-height: 460px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    display: block;
+}
+
+/* Typographie de l'article (le rendu du Markdown) */
+.article {
+    max-width: 820px;
+    margin: 0 auto;
+    font-size: 1.08rem;
+    color: #34495e;
+}
+
+.article h2 {
+    font-size: 1.9rem;
+    color: var(--primary);
+    margin: 45px 0 18px;
+}
+
+.article h3 {
+    font-size: 1.4rem;
+    color: var(--primary);
+    margin: 35px 0 15px;
+}
+
+.article p {
+    margin-bottom: 20px;
+}
+
+.article ul,
+.article ol {
+    margin: 0 0 20px 22px;
+}
+
+.article li {
+    margin-bottom: 8px;
+}
+
+.article a {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+.article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 25px 0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.article blockquote {
+    border-left: 4px solid var(--secondary);
+    background-color: #f1f5f9;
+    padding: 15px 20px;
+    margin: 25px 0;
+    border-radius: 0 8px 8px 0;
+    color: #556270;
+    font-style: italic;
+}
+
+/* Code en ligne (ex : `pinMode`) */
+.article :not(pre) > code {
+    background-color: #f1f5f9;
+    color: var(--accent);
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 0.92em;
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+/* Blocs de code (C++, etc.) */
+.article pre {
+    background-color: #282c34;
+    border-radius: 12px;
+    padding: 20px;
+    overflow-x: auto;
+    margin: 25px 0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.article pre code {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    background: none;
+    padding: 0;
+}
+
+.article table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+}
+
+.article th,
+.article td {
+    border: 1px solid #dfe6e9;
+    padding: 10px 14px;
+    text-align: left;
+}
+
+.article th {
+    background-color: #f1f5f9;
+    color: var(--primary);
+}
+
+.article-loading {
+    color: var(--gray);
+    text-align: center;
+}
+
+/* Message quand on ouvre le site sans serveur local */
+.notice {
+    max-width: 820px;
+    margin: 0 auto;
+    background-color: #f1f5f9;
+    border-left: 4px solid var(--secondary);
+    border-radius: 0 12px 12px 0;
+    padding: 25px 30px;
+}
+
+.notice h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.notice code {
+    background-color: #e2e8f0;
+    color: var(--accent);
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+.notice ol {
+    margin: 15px 0 15px 20px;
+}
+
+.notice li {
+    margin-bottom: 10px;
+}
+
+/* Bas de l'article */
+.article-footer {
+    max-width: 820px;
+    margin: 40px auto 0;
+    text-align: center;
+}
+
+.btn-outline-dark {
+    background-color: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.back-bottom {
+    display: block;
+    width: fit-content;
+    margin: 50px auto 0;
+}
+
+@media (max-width: 768px) {
+    .project-hero {
+        padding: 110px 0 40px;
+    }
+
+    .project-hero h1 {
+        font-size: 2rem;
+    }
+
+    .article {
+        font-size: 1rem;
     }
 }

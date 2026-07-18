@@ -20,21 +20,16 @@ document.addEventListener('DOMContentLoaded', function () {
         return /^https?:\/\//.test(image) ? image : 'projets/images/' + image;
     }
 
-    // Crée la carte HTML d'un projet
+    // Crée la carte HTML d'un projet (aperçu cliquable -> page complète)
     function creerCarte(projet) {
-        const card = document.createElement('article');
+        const card = document.createElement('a');
         card.className = 'project-card reveal';
+        card.href = 'projet.html?id=' + encodeURIComponent(projet.id || '');
         card.dataset.tags = (projet.tags || []).join('|').toLowerCase();
 
         const tagsHTML = (projet.tags || [])
             .map(t => `<span class="project-tag">${t}</span>`)
             .join('');
-
-        const lienHTML = projet.lien
-            ? `<a class="project-link" href="${projet.lien}" target="_blank" rel="noopener">
-                   Voir le projet <i class="fas fa-arrow-right"></i>
-               </a>`
-            : '';
 
         card.innerHTML = `
             <div class="project-img">
@@ -45,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <h3>${projet.titre || 'Projet sans titre'}</h3>
                 <p>${projet.description || ''}</p>
                 <div class="project-tags">${tagsHTML}</div>
-                ${lienHTML}
+                <span class="project-link">Lire la suite <i class="fas fa-arrow-right"></i></span>
             </div>`;
         return card;
     }

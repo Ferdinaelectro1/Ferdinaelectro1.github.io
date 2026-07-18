@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Détail d'un projet réalisé par ATI Ferdinand, électronicien.">
+    <title>Projet - ATI Ferdinand</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Coloration syntaxique du code (idéale pour le C++) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">ATI Ferdinand</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#accueil">Accueil</a></li>
+                <li><a href="index.html#apropos">À propos</a></li>
+                <li><a href="index.html#realisations">Réalisations</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- En-tête du projet (rempli automatiquement) -->
+    <header class="project-hero" id="projectHero">
+        <div class="container">
+            <a href="index.html#realisations" class="back-link">
+                <i class="fas fa-arrow-left"></i> Retour aux réalisations
+            </a>
+            <div class="project-hero-meta" id="projectMeta"></div>
+            <h1 id="projectTitle">Chargement du projet...</h1>
+            <div class="project-tags" id="projectTags"></div>
+        </div>
+    </header>
+
+    <!-- Corps de l'article (généré depuis le fichier Markdown du projet) -->
+    <main class="project-article container">
+        <div class="project-cover" id="projectCover"></div>
+        <article class="article" id="article">
+            <p class="article-loading">Chargement du contenu...</p>
+        </article>
+
+        <div class="article-footer" id="articleFooter"></div>
+
+        <a href="index.html#realisations" class="btn btn-primary back-bottom">
+            <i class="fas fa-arrow-left"></i> Voir tous les projets
+        </a>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Ferdinand</div>
+                <p>Électronicien passionné - Créateur d'innovations</p>
+                <div class="copyright">
+                    &copy; <span id="year">2025</span> Ferdinand. Tous droits réservés.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" aria-label="Revenir en haut">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Librairies : Markdown -> HTML, et coloration du code -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- Données des projets + logique -->
+    <script src="projets/projets.js"></script>
+    <script src="projet.js"></script>
+</body>
+</html>
