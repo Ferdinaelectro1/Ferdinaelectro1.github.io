@@ -13,8 +13,11 @@
     <!-- Navigation -->
     <nav>
         <div class="container nav-container">
-            <a href="#" class="logo">ATI Ferdinand</a>
-            <ul class="nav-links">
+            <a href="#accueil" class="logo">ATI Ferdinand</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#apropos">À propos</a></li>
                 <li><a href="#realisations">Réalisations</a></li>
@@ -44,7 +47,7 @@
                 <h2>À propos de moi</h2>
                 <p>Découvrez mon parcours, mes compétences et ma passion pour l'électronique</p>
             </div>
-            <div class="about-content">
+            <div class="about-content reveal">
                 <div class="profile-img">
                     <!-- Remplacez par votre photo -->
                     <img src="images/me.jpg" alt="Votre Nom">
@@ -81,71 +84,11 @@
                 <p>Découvrez mes projets électroniques les plus significatifs</p>
             </div>
             
-            <div class="projects-grid">
-                <!-- Projet 1 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Projet 1">
-                    </div>
-                    <div class="project-info">
-                        <h3>Système de surveillance environnementale</h3>
-                        <p>Dispositif IoT autonome mesurant la température, l'humidité et la qualité de l'air avec transmission de données en temps réel.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">ESP32</span>
-                            <span class="project-tag">Capteurs</span>
-                            <span class="project-tag">IoT</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Projet 2 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Projet 2">
-                    </div>
-                    <div class="project-info">
-                        <h3>Contrôleur de moteur pas-à-pas</h3>
-                        <p>Contrôleur haute précision pour moteurs pas-à-pas avec interface utilisateur intuitive et connectivité Bluetooth.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">STM32</span>
-                            <span class="project-tag">Drivers moteurs</span>
-                            <span class="project-tag">Bluetooth</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Projet 3 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1556911220-ef412aeaedc0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1228&q=80" alt="Projet 3">
-                    </div>
-                    <div class="project-info">
-                        <h3>Alimentation de laboratoire programmable</h3>
-                        <p>Alimentation 0-30V/5A avec contrôle numérique, protection et enregistrement des paramètres.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Alimentations</span>
-                            <span class="project-tag">Microcontrôleurs</span>
-                            <span class="project-tag">Interface TFT</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Projet 4 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Projet 4">
-                    </div>
-                    <div class="project-info">
-                        <h3>Station météo intelligente</h3>
-                        <p>Dispositif autonome mesurant les conditions météorologiques avec prédictions locales et historique des données.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Capteurs</span>
-                            <span class="project-tag">Affichage OLED</span>
-                            <span class="project-tag">Energie solaire</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Barre de filtres (générée automatiquement depuis les tags) -->
+            <div class="projects-filter" id="projectsFilter"></div>
+
+            <!-- La galerie se remplit automatiquement depuis projets/projets.js -->
+            <div class="projects-grid" id="projectsGrid"></div>
         </div>
     </section>
 
@@ -157,7 +100,7 @@
                 <p>Vous avez un projet ou une question ? N'hésitez pas à me contacter</p>
             </div>
             
-            <div class="contact-container">
+            <div class="contact-container reveal">
                 <div class="contact-info">
                     <h3>Informations de contact</h3>
                     
@@ -217,12 +160,19 @@
                 <div class="footer-logo">Ferdinand</div>
                 <p>Électronicien passionné - Créateur d'innovations</p>
                 <div class="copyright">
-                    &copy; 2025 Ferdinand. Tous droits réservés.
+                    &copy; <span id="year">2025</span> Ferdinand. Tous droits réservés.
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Bouton retour en haut -->
+    <button id="backToTop" class="back-to-top" aria-label="Revenir en haut">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Données des projets (édite ce fichier pour ajouter un projet) -->
+    <script src="projets/projets.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
